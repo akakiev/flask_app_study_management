@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Lesson Management</h2>
+
+<h3>Add New Lesson</h3>
+<form action="{{ url_for('main_routes.add_lesson') }}" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description">
+    <button type="submit">Add Lesson</button>
+</form>
+
+<h3>Lessons</h3>
+<ul>
+    {% for lesson in lessons %}
+    <li>{{ lesson.name }} - {{ lesson.description }}</li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('main_routes.home') }}">Back to the Main page</a>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Student Management</h2>
+
+<h3>Add New Student</h3>
+<form action="{{ url_for('main_routes.add_student') }}" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required>
+    <label for="group_id">Group ID:</label>
+    <input type="number" id="group_id" name="group_id">
+    <button type="submit">Add Student</button>
+</form>
+
+<h3>Students</h3>
+<ul>
+    {% for student in students %}
+    <li>{{ student.name }} ({{ student.age }} years old)</li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('main_routes.home') }}">Back to the Main page</a>
+{% endblock %}

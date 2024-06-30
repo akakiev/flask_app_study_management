@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Group Management</h2>
+
+<h3>Add New Group</h3>
+<form action="{{ url_for('main_routes.add_group') }}" method="post">
+    <label for="name">Group Name:</label>
+    <input type="text" id="name" name="name" required>
+    <button type="submit">Add Group</button>
+</form>
+
+<h3>Groups</h3>
+<ul>
+    {% for group in groups %}
+    <li>
+        <a href="{{ url_for('main_routes.view_group', group_id=group.id) }}">{{ group.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% if group %}
+<h3>Group: {{ group.name }}</h3>
+<h4>Students in this Group</h4>
+<ul>
+    {% for student in students %}
+    <li>{{ student.name }} ({{ student.age }} years old)</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<a href="{{ url_for('main_routes.home') }}">Back to the Main page</a>
+{% endblock %}

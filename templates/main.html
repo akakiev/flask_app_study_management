@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2> Main Page</h2>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('main_routes.view_groups') }}">Manage Groups</a></li>
+            <li><a href="{{ url_for('main_routes.view_students') }}">Manage Students</a></li>
+            <li><a href="{{ url_for('main_routes.view_lessons') }}">Manage Lessons</a></li>
+        </ul>
+    </nav>
+    <p> This is the main page of my Flask application. </p>
+
+{% endblock %}
